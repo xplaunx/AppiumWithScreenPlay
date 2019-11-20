@@ -28,7 +28,6 @@ public class LoginToTheApp implements Task {
 				        (Enter.theValue(userPassword).into(LoginPage.PASS_USER)),
 				        (Click.on(LoginPage.BUTTON_LOGIN))
 				        );
-		actor.attemptsTo();
 		
 	}
 

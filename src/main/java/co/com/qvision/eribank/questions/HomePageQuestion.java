@@ -13,7 +13,6 @@ public class HomePageQuestion implements Question<Boolean>{
 
 	@Override
 	public Boolean answeredBy(Actor actor) {
-		Boolean itmChecked = SelectedStatus.of(HomePage.MAKE_PAYMENT_BUTTON).viewedBy(actor).as(Boolean.class);
 		return HomePage.MAKE_PAYMENT_BUTTON.resolveFor(actor).isVisible();
 	}
 
