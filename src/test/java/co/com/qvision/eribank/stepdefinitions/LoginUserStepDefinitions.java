@@ -10,7 +10,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.GivenWhenThen;
+import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
@@ -19,8 +19,10 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
 
 public class LoginUserStepDefinitions {
 
-	private Actor sebas = Actor.named("sebas");
+	private String userName = "company";
+	private String userPassword = "company";
 	
+	private Actor sebas = Actor.named("sebas");
 
 	@Given("^that sebas open the app$")
 	public void thatSebasOpenTheApp() throws Exception {
@@ -29,13 +31,13 @@ public class LoginUserStepDefinitions {
 
 	@When("^he enters with valid user data$")
 	public void heEntersWithValidUserData() throws Exception {
-	  sebas.attemptsTo(LoginToTheApp.withUserData()); 
+	  sebas.attemptsTo(LoginToTheApp.withUserData(userName, userPassword)); 
 	}
 
 	@Then("^he can see the main menu$")
 	public void heCanSeeTheMainMenu() throws Exception {
 	  sebas.should(
-			  GivenWhenThen.seeThat(HomePageQuestion.isVisible())
+			  seeThat(HomePageQuestion.isVisible())
 			);
 	}
 	

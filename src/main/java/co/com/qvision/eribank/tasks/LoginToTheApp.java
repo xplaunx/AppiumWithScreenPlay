@@ -14,17 +14,23 @@ public class LoginToTheApp implements Task {
 	private String userPassword;
 	
 
+	public LoginToTheApp(String userName, String userPassword) {
+		this.userName = userName;
+		this.userPassword = userPassword;
+	}
+	
+	
 	@Override
 	public <T extends Actor> void performAs(T actor) {
-		actor.attemptsTo(Enter.theValue("company").into(LoginPage.NAME_USER),
-				        (Enter.theValue("company").into(LoginPage.PASS_USER)),
+		actor.attemptsTo(Enter.theValue(userName).into(LoginPage.NAME_USER),
+				        (Enter.theValue(userPassword).into(LoginPage.PASS_USER)),
 				        (Click.on(LoginPage.BUTTON_LOGIN))
 				        );
 		
 	}
 
-	public static LoginToTheApp withUserData() {
-		return Tasks.instrumented(LoginToTheApp.class);
+	public static LoginToTheApp withUserData(String userName, String userPassword) {
+		return Tasks.instrumented(LoginToTheApp.class, userName, userPassword);
 		
 	}
 	

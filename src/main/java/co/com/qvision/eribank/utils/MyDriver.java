@@ -31,7 +31,7 @@ public class MyDriver {
                 capabilities.setCapability("noReset", true);
 	        		
                 driver = new AppiumDriver<MobileElement>(new URL(url), capabilities);
-	        	driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	        	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	        	return driver;
             } catch (Exception e) {
                 logger.log(Level.SEVERE, ExceptionMessages.EXCEPTION_NO_CREATE_DRIVER.getMensaje(), e);
